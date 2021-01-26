@@ -1,5 +1,6 @@
 import yaml
 import os
+import commands
 from logger import logger
 from config.config import initialize
 
@@ -15,6 +16,7 @@ Welcome to the Ward Package Manager
 Where the force MAY be with you ...
 """)
 
+
 def parse_lines(lines, packages):
     """
     Parse lines and execute commands
@@ -23,6 +25,10 @@ def parse_lines(lines, packages):
         x = line.split(' ')
         cmd = x[0].upper()
         LOG.debug(cmd)
+        if 'LIST' in cmd:
+            getattr(commands, cmd)(p)
+        else:
+            getattr(commands, cmd)(line, p)
 
 
 def run():
