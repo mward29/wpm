@@ -8,6 +8,7 @@ root_path = initialize.ROOT_PATH
 LOG = logger.get_root_logger(
     __name__, filename=os.path.join(root_path, 'output.log'))
 
+p = {}
 
 # intro to wpm
 def intro():

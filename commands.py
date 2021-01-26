@@ -8,8 +8,11 @@ LOG = logger.get_root_logger(
     __name__, filename=os.path.join(root_path, 'output.log'))
 
 
-def DEPEND():
-    LOG.debug("depend function")
+def DEPEND(line, p):
+    pkg, deps = split_line(line)
+    p[pkg] = vars(pk(pkg, deps))
+    deps_join = " ".join(deps)
+    print("DEPEND " + pkg + " " + deps_join)
 
 def LIST():
     LOG.debug("list function")
@@ -19,3 +22,10 @@ def REMOVE():
 
 def INSTALL():
     LOG.debug("install function")
+
+
+def split_line(line):
+    x = line.split(' ')
+    pkg = x[1]
+    deps = x[2:]
+    return pkg, deps
