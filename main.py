@@ -39,20 +39,25 @@ def run():
     #LOG.debug("and so it begins")
     intro()
 
-    lines = []
-    print("Awaiting your input: ")
-    test = ''
-    while test != 'END':
-        line = input()
-        if line != "END":
-            lines.append(line)
-        else:
-            test = 'END'
-    #LOG.debug(lines)
+    reloop = True
+    while reloop is True:
+        lines = []
+        print("Awaiting your input: ")
+        print('EXIT or ctrl-c to quit WPM')
+        test = ''
+        while test != 'END' and test != 'EXIT':
+            line = input()
+            if line == 'EXIT':
+                exit()
+            elif line != "END":
+                lines.append(line)
+            else:
+                test = 'END'
+        #LOG.debug(lines)
 
-    parse_lines(lines, p)
+        parse_lines(lines, p)
 
-    #LOG.debug(p)
+        #LOG.debug(p)
 
 # execute if main
 if __name__ == "__main__":
