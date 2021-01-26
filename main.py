@@ -1,6 +1,7 @@
 import yaml
 import os
 from logger import logger
+from config.config import initialize
 
 root_path = initialize.ROOT_PATH
 LOG = logger.get_root_logger(
