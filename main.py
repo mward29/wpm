@@ -25,7 +25,7 @@ def parse_lines(lines, packages):
     for line in lines:
         x = line.split(' ')
         cmd = x[0].upper()
-        LOG.debug(cmd)
+        #LOG.debug(cmd)
         if 'LIST' in cmd:
             getattr(commands, cmd)(p)
         else:
@@ -36,7 +36,7 @@ def run():
     """
     Primary runtime of WPM
     """
-    LOG.debug("and so it begins")
+    #LOG.debug("and so it begins")
     intro()
 
     lines = []
@@ -48,8 +48,11 @@ def run():
             lines.append(line)
         else:
             test = 'END'
-    LOG.debug(lines)
+    #LOG.debug(lines)
 
+    parse_lines(lines, p)
+
+    #LOG.debug(p)
 
 # execute if main
 if __name__ == "__main__":
